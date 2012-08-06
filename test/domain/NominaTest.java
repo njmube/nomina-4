@@ -7,6 +7,7 @@ import org.junit.Test;
 
 /**
  * Unit test for {@link Nomina}.
+ * 
  * @author rafael.diaz
  */
 public class NominaTest {
@@ -18,6 +19,7 @@ public class NominaTest {
     Assert.assertEquals(sundayNomina.getFile(), "nomina2012716.txt");
     Assert.assertEquals(sundayNomina.toString(), "Nomina del 16-jul-2012 al 22-jul-2012");
   }
+
   @Test
   public void testCreateMonday() {
     // Create nomina on Monday.
@@ -26,6 +28,7 @@ public class NominaTest {
     Assert.assertEquals(sundayNomina.getFile(), "nomina2012723.txt");
     Assert.assertEquals(sundayNomina.toString(), "Nomina del 23-jul-2012 al 29-jul-2012");
   }
+
   @Test
   public void testCreateFirstDayConflict() {
     // Set the calendar first day of week to other value than Monday (e.g. Wednesday)
@@ -65,6 +68,7 @@ public class NominaTest {
 
   /**
    * Test utility method for creating calendar instances.
+   * 
    * @param year
    * @param month valid expected values are from 1-12
    * @param day valid expected values are from 1-..

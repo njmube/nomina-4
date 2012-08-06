@@ -81,6 +81,7 @@ public class Nomina implements Serializable {
     // base de datos se utiliza el setter en vez del constructor para ajustar la fecha
     // de identificacion de la nomina.
     Calendar date = Calendar.getInstance();
+    date.setFirstDayOfWeek(Calendar.MONDAY);
     // Es necesario recuperar los valores del dia, mes y anho para poder construir el
     // domingo.
     String[] mondaySplit = monday.split("-");
@@ -88,7 +89,9 @@ public class Nomina implements Serializable {
     date.set(Calendar.MONTH, Integer.parseInt(mondaySplit[1]) - 1);
     date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(mondaySplit[2]));
     // Una vez que hemos reproducido el lunes, ahora podemos ajustar la fecha a domingo
-    date.setFirstDayOfWeek(Calendar.MONDAY);
+    // Debido a un bug en la version de java es necesario hacer el get del DAY_OF_WEEK
+    // para refrescarlo antes de hacer el SET a domingo
+    date.get(Calendar.DAY_OF_WEEK);
     date.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
     sunday = dateToString(date);
   }
